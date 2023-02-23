@@ -1,0 +1,69 @@
+All command (executed on the local machine, using a dokku remote client):
+ go mod init github.com/apopov-app/dokku-bug
+ go mod tidy
+ dokku apps:create dokku-bug
+ git remote add dokku dokku@apopov.app:dokku-bug
+ git add .
+ git commit -a
+ git push # github
+ gif push dokku #
+
+ End error log:
+ ....
+ Total 16 (delta 1), reused 2 (delta 0), pack-reused 0
+ -----> Cleaning up...
+ -----> Building dokku-bug from herokuish
+ -----> Adding BUILD_ENV to build environment...
+        BUILD_ENV added successfully
+ -----> Go app detected
+ -----> Fetching jq... done
+ -----> Fetching stdlib.sh.v8... done
+ ----->
+               Detected go modules via go.mod
+ ----->
+               Detected Module Name: github.com/apopov-app/dokku-bug
+ ----->
+ -----> New Go Version, clearing old cache
+ -----> Installing go1.19.3
+ -----> Fetching go1.19.3.linux-amd64.tar.gz... done
+ -----> Determining packages to install
+
+               Detected the following main packages to install:
+                         github.com/apopov-app/dokku-bug
+
+ -----> Running: go install -v -tags heroku github.com/apopov-app/dokku-bug
+        github.com/apopov-app/dokku-bug
+
+               Installed the following binaries:
+                         ./bin/dokku-bug
+ -----> Discovering process types
+        Procfile declares types -> worker
+ -----> Releasing dokku-bug...
+ -----> Checking for predeploy task
+        No predeploy task found, skipping
+ -----> Checking for release task
+        No release task found, skipping
+ -----> Checking for first deploy postdeploy task
+        No first deploy postdeploy task found, skipping
+ =====> Processing deployment checks
+        No CHECKS file found. Simple container checks will be performed.
+        For more efficient zero downtime deployments, create a CHECKS file. See https://dokku.com/docs/deployment/zero-downtime-deploys/ for examples
+ -----> Deploying dokku-bug via the docker-local scheduler...
+ -----> Deploying web (count=1)
+        Attempting pre-flight checks (web.1)
+        Waiting for 10 seconds (web.1)
+ e050f3912e61b772af7bd1b638d1993f210be3ef1285c9e23980cad0883e1d1d
+ remote:  !     App container failed to start (web.1)
+ =====> Start of dokku-bug container output (web.1)
+        Proc entrypoint web does not exist. Please check your Procfile
+        Proc entrypoint web does not exist. Please check your Procfile
+        Proc entrypoint web does not exist. Please check your Procfile
+        Proc entrypoint web does not exist. Please check your Procfile
+        Proc entrypoint web does not exist. Please check your Procfile
+        Proc entrypoint web does not exist. Please check your Procfile
+        Proc entrypoint web does not exist. Please check your Procfile
+ =====> End of dokku-bug container output (web.1)
+ remote: parallel: This job failed:
+ remote: /var/lib/dokku/plugins/available/scheduler-docker-local/bin/scheduler-deploy-process-container dokku-bug herokuish dokku/dokku-bug:latest latest web 1 1
+ To apopov.app:dokku-bug
+  ! [remote rejected] master -> master (pre-receive hook declined)
